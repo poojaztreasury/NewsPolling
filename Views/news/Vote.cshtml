@@ -1,0 +1,31 @@
+﻿@model NewsPolling.Models.Logandvote
+
+@{
+    ViewData["Title"] = "Vote";
+    var id = Context.Request.Query["newsid"];
+}
+
+<h1>Vote</h1>
+
+<h4 >Here You can vote your favourite news!!!! </h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Vote">
+            
+            <div class="form-group">
+                Vote for this News is<h4> <label>@Html.DisplayFor(modelitem => Model.votes)</label> </h4>
+                
+                <span asp-validation-for="votes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Vote" class="btn btn-primary" onclick="location.href='@Url.Action("Vote", "news", new { newsid = Context.Request.Query["newsid"] })'"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Display">Back to List</a>
+</div>
+

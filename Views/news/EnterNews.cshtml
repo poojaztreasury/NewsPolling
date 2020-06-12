@@ -1,0 +1,45 @@
+﻿@model NewsPolling.Models.News
+
+@{
+    ViewData["Title"] = "EnterNews";
+}
+
+<h1>EnterNews</h1>
+
+<h4>News</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EnterNews">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="newsid" class="control-label"></label>
+                <input asp-for="newsid" class="form-control" />
+                <span asp-validation-for="newsid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="title" class="control-label"></label>
+                <input asp-for="title" class="form-control" />
+                <span asp-validation-for="title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="description" class="control-label"></label>
+                <input asp-for="description" class="form-control" />
+                <span asp-validation-for="description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="repoterid" class="control-label"></label>
+                <input asp-for="repoterid" class="form-control" />
+                <span asp-validation-for="repoterid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,47 @@
+﻿@model PaginationModel<News>
+
+@{
+    var Lst = ViewBag.email as IEnumerable<NewsPolling.Models.Repoter>;
+
+}
+
+<h1>Display</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>Title</th>
+            <th>Description</th>
+            <th>Repoter's Email</th>
+            <th>Vote</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model.Data)
+    {
+        <tr style="@(item.votes == 0? "color:red":"color:black")">
+
+
+            @*<td>@Html.DisplayFor(modelitem=>item.newsid)</td>*@
+            <td>@Html.DisplayFor(modelitem => item.title)</td>
+
+            <td>@Html.DisplayFor(modelitem => item.description)</td>
+            <td>@Html.DisplayFor(modelitem => item.email)</td>
+            <td> @Html.ActionLink("vote this news", "Vote", "news", new { newsid = item.newsid }) </td>
+
+        </tr>
+    }
+
+</table>
+<div>
+    <ul class="pagination">
+        @for (var i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                <a asp-page="/display" asp-route-currentpage="@i" asp-route-pagesize="2" class="page-link">@i</a>
+            </li>
+        }
+    </ul>
+</div>
+<p>  @Html.ActionLink("Add News", "AddNews", "news")</p>
